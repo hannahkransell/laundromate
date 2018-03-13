@@ -1,28 +1,22 @@
 import React from 'react'
+import WeekSelector from './components/week-selector'
 
 class Bookings extends React.Component {
+
+	constructor(props) {
+		super(props)
+		this.onWeekChange = this.onWeekChange.bind(this)
+		this.state = {weekNumber: 40}
+	}
+
+	onWeekChange(delta) {
+		this.setState({weekNumber: this.state.weekNumber+delta})
+	}
+
 	render() {
 		return (
 			<div>
-				<div className="row">
-					<div className="col-xs-2">
-						<h1>
-							<a>
-								<span className="glyphicon glyphicon-chevron-left"></span>
-							</a>
-						</h1>
-					</div>
-					<div className="col-xs-8">
-						<h1 className="text-center">v.43</h1>
-					</div>
-					<div className="col-xs-2">
-						<h1>
-							<a className="pull-right">
-								<span className="glyphicon glyphicon-chevron-right"></span>
-							</a>
-						</h1>
-					</div>
-				</div>
+				<WeekSelector number={this.state.weekNumber} onChange={this.onWeekChange} />
 				<div className="row">
 					<div className="col-xs-12">
 						
