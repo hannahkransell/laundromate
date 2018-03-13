@@ -2,7 +2,7 @@
   "name": "laundromate",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack-dev-server --hot --watch-poll",
+    "dev": "webpack-dev-server --watch-poll",
     "heroku-postbuild": "webpack"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
+    "moment": "^2.21.0",
     "node-sass": "^4.6.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",

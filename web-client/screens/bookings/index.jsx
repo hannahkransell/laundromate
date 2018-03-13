@@ -1,27 +1,29 @@
 import React from 'react'
 import WeekSelector from './components/week-selector'
+import {getWeek, getDateOfWeek, addDays} from 'laundromate/util'
+import Table from './components/table'
+
 
 class Bookings extends React.Component {
 
 	constructor(props) {
 		super(props)
 		this.onWeekChange = this.onWeekChange.bind(this)
-		this.state = {weekNumber: 40}
+		const now = new Date()
+		this.state = {firstDateOfWeek: getDateOfWeek(getWeek(now), now.getFullYear())}
 	}
 
 	onWeekChange(delta) {
-		this.setState({weekNumber: this.state.weekNumber+delta})
+		const newDate = addDays(this.state.firstDateOfWeek, delta)
+		console.log('week changed!', newDate)
+		this.setState({firstDateOfWeek: newDate})
 	}
 
 	render() {
 		return (
 			<div>
-				<WeekSelector number={this.state.weekNumber} onChange={this.onWeekChange} />
-				<div className="row">
-					<div className="col-xs-12">
-						
-					</div>
-				</div>
+				<WeekSelector firstDateOfWeek={this.state.firstDateOfWeek} onChange={this.onWeekChange} />
+				<Table firstDateOfWeek={this.state.firstDateOfWeek} />
 			</div>
 		)
 	}
